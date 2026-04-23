@@ -7,7 +7,5 @@ export default async function HomePage() {
     getLandingPage("en"),
   ]);
 
-  console.log(">>> page", page);
-
   return <LandingPage locale="en" global={global} page={page} />;
 }

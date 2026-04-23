@@ -1,10 +1,15 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
+import { usePopup } from "@/providers/PopupProvider";
 
 import Link from "next/link";
 import { renderIcon } from "@/components/SvgFromUrl";
 
 const Button = ({ data: button, className: customClass = "" }) => {
   if (!button) return null;
+
+  const { openPopup } = usePopup();
 
   const { text, link, hasLink, icon, isExternal, variant, iconPosition } =
     button;
@@ -41,6 +46,7 @@ const Button = ({ data: button, className: customClass = "" }) => {
         target="_blank"
         rel="noopener noreferrer"
         className={className}
+        onClick={openPopup}
       >
         {content}
       </a>
@@ -48,7 +54,7 @@ const Button = ({ data: button, className: customClass = "" }) => {
   }
 
   return (
-    <Link href={link} className={className}>
+    <Link href={link} className={className} onClick={openPopup}>
       {content}
     </Link>
   );

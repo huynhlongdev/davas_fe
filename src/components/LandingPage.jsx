@@ -9,6 +9,7 @@ import InvestmentSection from "./blocks/InvestmentSection";
 import PageLoader from "./PageLoader";
 import About from "./blocks/AboutSection";
 import Partnership from "./blocks/Partnership";
+import Modal from "./modals/Modal";
 
 const blockComponents = {
   "block.banner-section": HeroSection,
@@ -30,6 +31,7 @@ export default function LandingPage({ locale, global, page }) {
       <Header data={global?.header} locale={locale} />
 
       <main>
+        <Modal />
         {blocks.map((block) => {
           if (!block?.id || !block?.__component) return null;
 
