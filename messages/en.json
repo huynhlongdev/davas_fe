@@ -1,0 +1,28 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language",
+    "english": "English",
+    "vietnamese": "Tiếng Việt",
+    "loading": "Loading...",
+    "error": "Error",
+    "tryAgain": "Try Again"
+  },
+  "landing": {
+    "title": "Welcome",
+    "description": "Discover amazing content",
+    "cta": "Get Started"
+  },
+  "header": {
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "footer": {
+    "copyright": "All rights reserved",
+    "followUs": "Follow Us",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy"
+  }
+}

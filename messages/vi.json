@@ -1,0 +1,28 @@
+{
+  "common": {
+    "home": "Trang chủ",
+    "about": "Về chúng tôi",
+    "contact": "Liên hệ",
+    "language": "Ngôn ngữ",
+    "english": "English",
+    "vietnamese": "Tiếng Việt",
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "tryAgain": "Thử lại"
+  },
+  "landing": {
+    "title": "Chào mừng",
+    "description": "Khám phá nội dung tuyệt vời",
+    "cta": "Bắt đầu"
+  },
+  "header": {
+    "menu": "Menu",
+    "close": "Đóng"
+  },
+  "footer": {
+    "copyright": "Bản quyền được bảo vệ",
+    "followUs": "Theo dõi chúng tôi",
+    "terms": "Điều khoản sử dụng",
+    "privacy": "Chính sách bảo mật"
+  }
+}
