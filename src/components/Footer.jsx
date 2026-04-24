@@ -6,7 +6,7 @@ export default function Footer({ data }) {
   const { logo, by, text, address, copyright } = data || {};
 
   return (
-    <footer className="text-[#ffffff4d] bg-ink text-[14px">
+    <footer className="text-t4 bg-ink text-[14px">
       <div className="container mx-auto px-4 py-10">
         {/* GRID */}
         <div className="flex flex-col">
@@ -41,8 +41,8 @@ export default function Footer({ data }) {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-10">
-        <div className="flex justify-between">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between border-t border-t4 py-5.5">
           <p className="text-sm">{copyright}</p>
           <p>{by}</p>
         </div>

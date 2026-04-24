@@ -9,8 +9,6 @@ const Model = () => {
 
   return (
     <div className="mt-20">
-      <button onClick={openPopup}>Register</button>
-
       <RegisterModal isOpen={isOpen} onClose={closePopup} />
     </div>
   );

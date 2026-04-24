@@ -1,9 +1,10 @@
 import React from "react";
 import Heading from "../Heading";
 
-const Partnership = ({ data: { partners, heading } }) => {
+const Partnership = ({ data: block }) => {
+  const { partners, heading } = block || {};
   return (
-    <section id="partners" className="py-25 bg-gray-50 overflow-hidden">
+    <section id="partners" className="py-25 bg-off overflow-hidden">
       <div className="max-w-[1360px] mx-auto px-10">
         <Heading data={heading} />
 

@@ -32,6 +32,7 @@
   --color-t1: #0c0b0a;
   --color-t2: #4a4845;
   --color-t3: #8a8680;
+  --color-t4: rgba(255, 255, 255, 0.5);
 
   --font-sans: var(--font-manrope);
 }
@@ -68,6 +69,44 @@ p:last-child {
 
 .container {
   width: 1360px;
+}
+
+.gr1 {
+  background-image:
+    linear-gradient(rgba(200, 16, 46, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 16, 46, 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+.gr2 {
+  background: radial-gradient(
+    circle,
+    rgba(200, 16, 46, 0.09) 0%,
+    transparent 65%
+  );
+}
+.gr3 {
+  background: radial-gradient(
+    circle,
+    rgba(244, 121, 32, 0.06) 0%,
+    transparent 65%
+  );
+}
+
+#register::before {
+  content: "";
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(200, 16, 46, 0.25) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
 }
 
 #page-loader {
