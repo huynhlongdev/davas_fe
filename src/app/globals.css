@@ -71,6 +71,41 @@ p:last-child {
   width: 1360px;
 }
 
+.p-row.rl .p-track {
+  animation: sl 34s linear infinite;
+}
+
+.p-row.rr .p-track {
+  animation: sr 40s linear infinite;
+}
+
+.p-row.rl2 .p-track {
+  animation: sl 46s linear infinite;
+}
+
+.p-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+}
+
+@keyframes sl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+@keyframes sr {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .gr1 {
   background-image:
     linear-gradient(rgba(200, 16, 46, 0.045) 1px, transparent 1px),
