@@ -1,57 +1,84 @@
 "use client";
 
+import Image from "next/image";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import { renderIcon } from "@/components/SvgFromUrl";
 
-export default function Footer({ data }) {
-  const { logo, by, text, address, copyright } = data || {};
+export default function Footer({ data = {} }) {
+  const {
+    logo,
+    by = "",
+    text = null,
+    address = [],
+    copyright = "",
+  } = data;
+
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "";
+
+  const logoUrl = logo?.media?.url
+    ? `${baseUrl}${logo.media.url}`
+    : null;
+
+  const renderAddressItem = (item) => {
+    if (!item?.text) return null;
+
+    const href = item.link || "#";
+
+    return (
+      <li key={item.id}>
+        <a
+          href={href}
+          className="flex items-start gap-2 transition hover:text-white"
+        >
+          {item.icon &&
+            renderIcon({
+              icon: item.icon,
+              className: "mt-1 h-4 w-4 shrink-0",
+            })}
+
+          <span>{item.text}</span>
+        </a>
+      </li>
+    );
+  };
 
   return (
-    <footer className="text-t4 bg-ink text-sm">
+    <footer className="bg-ink text-sm text-t4">
       <div className="container mx-auto px-4 py-15">
-        <div className="flex gap-8">
-          <div className="space-x-100">
-            <img
-              src={`${process.env.NEXT_PUBLIC_API_URL}${logo?.media?.url}`}
-              alt="footer logo"
-              className="h-10 w-auto mb-4"
-            />
-            <div>
-              <ul className="space-y-2">
-                {address?.map((item) => (
-                  <>
-                    {item.text && (
-                      <li key={item.id}>
-                        <a
-                          href={item?.link || "#"}
-                          className="hover:text-white transition flex gap-2 items-start"
-                        >
-                          {item?.icon &&
-                            renderIcon({
-                              icon: item.icon,
-                              className: "inline-flex w-4 shrink-0 mt-[6px]",
-                            })}
-                          <span>{item.text}</span>
-                        </a>
-                      </li>
-                    )}{" "}
-                  </>
-                ))}
+        <div className="grid gap-10 md:grid-cols-[320px_1fr]">
+          {/* Left */}
+          <div>
+            {logoUrl && (
+              <div className="relative mb-6 h-10 w-44">
+                <Image
+                  src={logoUrl}
+                  alt="Footer logo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            )}
+
+            {address.length > 0 && (
+              <ul className="space-y-3">
+                {address.map(renderAddressItem)}
               </ul>
-            </div>
+            )}
           </div>
 
-          <div className="text mt-10">
-            <BlocksRenderer content={text} />
+          {/* Right */}
+          <div>
+            {text && <BlocksRenderer content={text} />}
           </div>
         </div>
       </div>
 
-      {/* copyright */}
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between border-t border-t4 py-5.5 text-sm">
-          <p>{copyright}</p>
-          <p>{by}</p>
+      <div className="border-t border-t4">
+        <div className="container mx-auto px-4 py-5">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+            <p>{copyright}</p>
+            <p>{by}</p>
+          </div>
         </div>
       </div>
     </footer>

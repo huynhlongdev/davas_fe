@@ -17,7 +17,7 @@ export default function GuestSection({ data }) {
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  console.log("isPopupOpen", currentGuest);
+  // console.log("isPopupOpen", currentGuest);
 
   return (
     <section id="speakers" className="py-25 bg-white">

@@ -11,6 +11,7 @@ export default function SvgFromUrl({ url, className = "w-4 h-4 shrink-0" }) {
     fetch(url)
       .then((res) => res.text())
       .then((data) => {
+        log(`Fetched SVG from ${url}:`, data);
         const cleaned = data
           .replace(/width=".*?"/g, "")
           .replace(/height=".*?"/g, "")
@@ -18,7 +19,12 @@ export default function SvgFromUrl({ url, className = "w-4 h-4 shrink-0" }) {
 
         setSvg(cleaned);
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.log(`Error`, error);
+        
+        setSvg(null);
+        return null
+      });
   }, [url]);
 
   if (!svg) return null;

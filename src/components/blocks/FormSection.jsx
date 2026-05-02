@@ -3,6 +3,7 @@
 import { useState } from "react";
 import RandomGallery from "../RandomGallery";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import Heading from "../Heading";
 
 export default function FormSection({ data }) {
   const [formData, setFormData] = useState({});
@@ -33,9 +34,8 @@ export default function FormSection({ data }) {
   const qrcodeUrl =
     `${process.env.NEXT_PUBLIC_API_URL}${data?.qrcode?.url}` || null;
 
-  const {
-    heading: { primaryText, subText, description },
-  } = data;
+  const heading = data?.heading || {};
+  const { primaryText, subText, description } = heading;
 
   return (
     <section
@@ -56,10 +56,12 @@ export default function FormSection({ data }) {
               ></h2>
             )}
 
-            <div className="text-t4">
+            {description && <div className="text-t4">
               <BlocksRenderer content={description} />
             </div>
+             }
           </div>
+           
 
           {/* Right: Form */}
           <div>
@@ -90,7 +92,7 @@ export default function FormSection({ data }) {
                       value={formData[field?.label] || ""}
                       onChange={handleChange}
                       placeholder={field?.placeholder}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:border-red outline-0"
+                      className="w-full px-4 py-2 border text-t4 border-border rounded-lg focus:border-red outline-0"
                     >
                       <option value="">{field?.placeholder}</option>
                       {field?.options?.map((option, optIndex) => (
