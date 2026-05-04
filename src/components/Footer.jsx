@@ -20,7 +20,7 @@ export default function Footer({ data }) {
               <ul className="space-y-2">
                 {address?.map((item) => (
                   <>
-                    {item.text && (
+                    {item?.text && (
                       <li key={item.id}>
                         <a
                           href={item?.link || "#"}
