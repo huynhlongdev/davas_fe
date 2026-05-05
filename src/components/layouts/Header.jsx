@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import LanguageSwitcher from "./LanguageSwitcher";
+import LanguageSwitcher from "../LanguageSwitcher";
+import { usePopup } from "@/providers/PopupProvider";
 
 export default function Header({ data }) {
   const { logo, menu, cta } = data || {};
 
+  const { openPopup } = usePopup();
+
   return (
     <header className=" bg-white border-b border-border w-full fixed top-0 z-50">
-      <div className="container mx-auto px-4 ">
+      <div className="max-w-[1360px] mx-auto px-4">
         <div className="flex items-center justify-between h-18">
           {/* LEFT: Logo */}
           <div className="flex items-center">
@@ -60,23 +63,13 @@ export default function Header({ data }) {
 
             {/* RIGHT: CTA & Language Switcher */}
             <div className="flex items-center gap-4">
-              {cta?.isExternal ? (
-                <a
-                  href={cta?.linkTo || "/"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-red hover:bg-red-light text-white font-display font-medium text-sm border-0 cursor-pointer px-5.5 py-1.5 transition rounded-[7px] uppercase"
-                >
-                  {cta?.text || "Button"}
-                </a>
-              ) : (
-                <Link
-                  href={cta?.linkTo || "/"}
-                  className="bg-red hover:bg-red-light text-white font-display font-medium text-sm border-0 cursor-pointer px-5.5 py-1.5 transition rounded-[7px] uppercase"
-                >
-                  {cta?.text || "Button"}
-                </Link>
-              )}
+              <Link
+                href={cta?.linkTo || "/"}
+                className="bg-red hover:bg-red-light text-white font-display font-medium text-sm border-0 cursor-pointer px-5.5 py-1.5 transition rounded-[7px] uppercase"
+                onClick={openPopup}
+              >
+                {cta?.text || "Button"}
+              </Link>
             </div>
           </div>
         </div>

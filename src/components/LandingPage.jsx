@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Footer from "./Footer";
+import Header from "@/components/layouts/Header";
+import Footer from "@/components/layouts/Footer";
 import HeroSection from "./blocks/HeroSection";
 import GuestSection from "./blocks/GuestSection";
 import FaqSection from "./blocks/FaqSection";
@@ -9,6 +9,7 @@ import InvestmentSection from "./blocks/InvestmentSection";
 import PageLoader from "./PageLoader";
 import About from "./blocks/AboutSection";
 import Partnership from "./blocks/Partnership";
+import VideoSecrion from "./blocks/VideoSecrion";
 import Modal from "./modals/Modal";
 
 const blockComponents = {
@@ -19,6 +20,7 @@ const blockComponents = {
   "block.investment-section": InvestmentSection,
   "block.guest-section": GuestSection,
   "block.form-section": FormSection,
+  "block.video-section": VideoSecrion,
 };
 
 export default function LandingPage({ locale, global, page }) {
@@ -26,12 +28,12 @@ export default function LandingPage({ locale, global, page }) {
 
   return (
     <>
-      {/* <PageLoader data={global?.loader} /> */}
+      <PageLoader data={global?.loader} />
 
       <Header data={global?.header} locale={locale} />
 
       <main>
-        <Modal />
+        <Modal data={global?.form} />
         {blocks.map((block) => {
           if (!block?.id || !block?.__component) return null;
 

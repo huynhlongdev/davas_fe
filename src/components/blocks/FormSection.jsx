@@ -3,6 +3,7 @@
 import { useState } from "react";
 import RandomGallery from "../RandomGallery";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
+import Heading from "../Heading";
 
 export default function FormSection({ data }) {
   const [formData, setFormData] = useState({});
@@ -33,16 +34,15 @@ export default function FormSection({ data }) {
   const qrcodeUrl =
     `${process.env.NEXT_PUBLIC_API_URL}${data?.qrcode?.url}` || null;
 
-  const {
-    heading: { primaryText, subText, description },
-  } = data;
+  const heading = data?.heading || {};
+  const { primaryText, subText, description } = heading;
 
   return (
     <section
       id="register"
       className="py-[100px] bg-ink relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1360px] px-4 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="space-y-4 max-w-[440px]">
             {/* <RandomGallery images={data?.images} /> */}
@@ -56,9 +56,11 @@ export default function FormSection({ data }) {
               ></h2>
             )}
 
-            <div className="text-t4">
-              <BlocksRenderer content={description} />
-            </div>
+            {description && (
+              <div className="text-t4">
+                <BlocksRenderer content={description} />
+              </div>
+            )}
           </div>
 
           {/* Right: Form */}
@@ -90,7 +92,7 @@ export default function FormSection({ data }) {
                       value={formData[field?.label] || ""}
                       onChange={handleChange}
                       placeholder={field?.placeholder}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:border-red outline-0"
+                      className="w-full px-4 py-2 border text-t4 border-border rounded-lg focus:border-red outline-0"
                     >
                       <option value="">{field?.placeholder}</option>
                       {field?.options?.map((option, optIndex) => (
@@ -116,14 +118,14 @@ export default function FormSection({ data }) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-red text-white font-bold py-2 rounded-lg  transition mt-4"
+                className="w-full bg-red text-white font-bold py-2 rounded-lg  transition mt-4 cursor-pointer"
               >
                 {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </form>
 
             <div className="mt-8 p-6 bg-[rgba(255,255,255,.05)] border-[rgba(255,255,255,.1)] border rounded-[8px] flex items-center gap-3">
-              <div className="w-22 h-22 rounded-[8px] bg-white overflow-hidden">
+              <div className="w-22 h-22 shrink-0 rounded-[8px] bg-white overflow-hidden">
                 <img src={qrcodeUrl} alt="" />
               </div>
               <div className="text-white">

@@ -10,8 +10,6 @@ export function PopupProvider({ children }) {
   const openPopup = () => setIsOpen(true);
   const closePopup = () => setIsOpen(false);
 
-  console.log(">>isOpen", isOpen);
-
   return (
     <PopupContext.Provider value={{ isOpen, openPopup, closePopup }}>
       {children}

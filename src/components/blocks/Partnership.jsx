@@ -41,7 +41,7 @@ const Partnership = ({ data: block }) => {
 
   return (
     <section id="partners" className="py-25 bg-off overflow-hidden">
-      <div className="max-w-[1360px] mx-auto px-10 mb-13">
+      <div className="max-w-[1360px] px-4 mx-auto mb-13">
         <Heading data={heading} />
       </div>
 

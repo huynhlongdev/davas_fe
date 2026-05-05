@@ -17,7 +17,7 @@ export default function InvestmentSection({ data }) {
 
   return (
     <section id="investment" className="py-25 bg-white">
-      <div className="max-w-[1360px] mx-auto px-10">
+      <div className="max-w-[1360px] px-4 mx-auto">
         <Heading data={heading} />
 
         {/* Investment List and Details */}

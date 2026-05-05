@@ -40,7 +40,7 @@ export default function RegisterModal({ isOpen, onClose }) {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 z-10 w-9 h-9 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors duration-150"
+          className="absolute top-5 right-5 z-10 w-9 h-9 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors duration-150 cursor-pointer"
         >
           ✕
         </button>

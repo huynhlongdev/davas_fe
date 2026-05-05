@@ -57,7 +57,7 @@ export default function FaqSection({ data }) {
 
   return (
     <section id="faq" className="py-25 bg-white">
-      <div className="max-w-[1360px] mx-auto px-10">
+      <div className="max-w-[1360px] px-4 mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr] gap-20 items-start">
           {/* Sidebar */}
           <div>

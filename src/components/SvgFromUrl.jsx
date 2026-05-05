@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function SvgFromUrl({ url, className = "w-4 h-4 shrink-0" }) {
+const SvgFromUrl = ({ url, className = "w-4 h-4 shrink-0" }) => {
   const [svg, setSvg] = useState("");
 
   useEffect(() => {
@@ -18,7 +18,12 @@ export default function SvgFromUrl({ url, className = "w-4 h-4 shrink-0" }) {
 
         setSvg(cleaned);
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.log(`Error`, error);
+
+        setSvg(null);
+        return null;
+      });
   }, [url]);
 
   if (!svg) return null;
@@ -26,9 +31,9 @@ export default function SvgFromUrl({ url, className = "w-4 h-4 shrink-0" }) {
   return (
     <span className={className} dangerouslySetInnerHTML={{ __html: svg }} />
   );
-}
+};
 
-export function renderIcon({ icon, className = "" }) {
+const Icon = ({ icon, className = "w-4 h-4 shrink-0", alt = "icon" }) => {
   if (!icon?.url) return null;
 
   const url = `${process.env.NEXT_PUBLIC_API_URL}${icon.url}`;
@@ -39,10 +44,8 @@ export function renderIcon({ icon, className = "" }) {
   }
 
   return (
-    <img
-      src={url}
-      alt={icon?.alternativeText || "icon"}
-      className={className}
-    />
+    <img src={url} alt={icon?.alternativeText || alt} className={className} />
   );
-}
+};
+
+export default Icon;

@@ -5,10 +5,10 @@ import Button from "./Button";
 
 export default function Countdown({ data }) {
   const [countdown, setCountdown] = useState({
-    days: "--",
-    hours: "--",
-    minutes: "--",
-    seconds: "--",
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
   });
 
   const { label, event, endDate, dateText, address, icon, button } = data || {};
@@ -22,21 +22,17 @@ export default function Countdown({ data }) {
       if (distance < 0) {
         setCountdown({ days: "0", hours: "0", minutes: "0", seconds: "0" });
       } else {
+        const totalSeconds = Math.floor(distance / 1000);
         setCountdown({
-          days: String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(
-            2,
-            "0",
-          ),
+          days: String(Math.floor(totalSeconds / (3600 * 24))).padStart(2, "0"),
           hours: String(
-            Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+            Math.floor((totalSeconds % (3600 * 24)) / 3600),
           ).padStart(2, "0"),
-          minutes: String(
-            Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-          ).padStart(2, "0"),
-          seconds: String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(
+          minutes: String(Math.floor((totalSeconds % 3600) / 60)).padStart(
             2,
             "0",
           ),
+          seconds: String(totalSeconds % 60).padStart(2, "0"),
         });
       }
     };
