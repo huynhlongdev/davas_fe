@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Heading from "../Heading";
+import Heading from "../shared/Heading";
 
 const Partnership = ({ data: block }) => {
   const { partners, heading } = block || {};

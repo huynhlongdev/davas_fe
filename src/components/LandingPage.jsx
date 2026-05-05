@@ -1,3 +1,9 @@
+"use client";
+
+import { useGlobal } from "@/hooks/useGlobal";
+import { useLandingPage } from "@/hooks/useLandingPage";
+import { LocaleProvider } from "@/providers/LocaleProvider";
+
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import HeroSection from "./blocks/HeroSection";
@@ -6,10 +12,10 @@ import FaqSection from "./blocks/FaqSection";
 import FormSection from "./blocks/FormSection";
 import ProgramSection from "./blocks/ProgramSection";
 import InvestmentSection from "./blocks/InvestmentSection";
-import PageLoader from "./PageLoader";
+import PageLoader from "@/components/shared/PageLoader";
 import About from "./blocks/AboutSection";
 import Partnership from "./blocks/Partnership";
-import VideoSecrion from "./blocks/VideoSecrion";
+import VideoSection from "./blocks/VideoSection";
 import Modal from "./modals/Modal";
 
 const blockComponents = {
@@ -20,20 +26,24 @@ const blockComponents = {
   "block.investment-section": InvestmentSection,
   "block.guest-section": GuestSection,
   "block.form-section": FormSection,
-  "block.video-section": VideoSecrion,
+  "block.video-section": VideoSection,
 };
 
-export default function LandingPage({ locale, global, page }) {
-  const blocks = page?.blocks || [];
+export default function LandingPage({ locale }) {
+  const globalQuery = useGlobal(locale);
+  const pageQuery = useLandingPage(locale);
+
+  const blocks = pageQuery?.data?.blocks || [];
+  const global = globalQuery?.data || {};
 
   return (
-    <>
-      <PageLoader data={global?.loader} />
+    <LocaleProvider locale={locale}>
+      {/* <PageLoader data={global?.loader} /> */}
 
-      <Header data={global?.header} locale={locale} />
+      <Header data={global?.header} />
 
       <main>
-        <Modal data={global?.form} />
+        <Modal />
         {blocks.map((block) => {
           if (!block?.id || !block?.__component) return null;
 
@@ -45,6 +55,6 @@ export default function LandingPage({ locale, global, page }) {
       </main>
 
       <Footer data={global?.footer} />
-    </>
+    </LocaleProvider>
   );
 }

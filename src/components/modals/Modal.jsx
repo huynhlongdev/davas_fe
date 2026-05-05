@@ -4,10 +4,8 @@ import React from "react";
 import RegisterModal from "@/components/modals/RegisterModal";
 import { usePopup } from "@/providers/PopupProvider";
 
-const Model = ({ data: fields }) => {
+const Model = () => {
   const { isOpen, closePopup } = usePopup();
-
-  console.log(">>>fields", fields);
 
   return (
     <div className="mt-20">

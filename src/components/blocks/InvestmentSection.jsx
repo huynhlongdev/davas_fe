@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import Heading from "../Heading";
+import Heading from "../shared/Heading";
 
 const investmentFunds = [
   { name: "Quest Ventures", type: "Early-Stage VC" },

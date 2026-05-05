@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import Heading from "../Heading";
-import Speaker from "../Speaker";
-import Button from "../Button";
+import Heading from "@/components/shared/Heading";
+import Speaker from "@/components/shared/Speaker";
+import Button from "@/components/shared/Button";
 
 export default function GuestSection({ data }) {
   const { heading, guests } = data;

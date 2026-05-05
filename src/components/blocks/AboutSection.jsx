@@ -1,6 +1,6 @@
 import React from "react";
-import Heading from "../Heading";
-import Icon from "@/components/SvgFromUrl";
+import Heading from "../shared/Heading";
+import Icon from "@/components/shared/Icon";
 
 export default function About({ data }) {
   const { heading, cards } = data;

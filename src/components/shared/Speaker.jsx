@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "./Image";
+import Image from "@/components/shared/Image";
 
 const Speaker = ({ data }) => {
   const { name, position, image } = data || {};

@@ -2,7 +2,7 @@
 
 import React, { useCallback } from "react";
 import Link from "next/link";
-import Icon from "@/components/SvgFromUrl";
+import Icon from "@/components/shared/Icon";
 import { usePopup } from "@/providers/PopupProvider";
 
 const VARIANTS = {

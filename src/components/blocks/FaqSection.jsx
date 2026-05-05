@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import Heading from "@/components/Heading";
+import Heading from "@/components/shared/Heading";
 
 function FAQItem({ question, answer, isOpen, onClick }) {
   return (

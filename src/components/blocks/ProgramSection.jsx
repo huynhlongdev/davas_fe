@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import Heading from "../Heading";
+import Heading from "../shared/Heading";
 
 export default function ProgramSection({ data }) {
   const tabs = data?.tabsProgram ?? [];

@@ -2,7 +2,7 @@
 
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Countdown from "@/components/Countdown";
-import Button from "@/components/Button";
+import Button from "@/components/shared/Button";
 import { usePopup } from "@/providers/PopupProvider";
 
 export default function Hero({ data }) {

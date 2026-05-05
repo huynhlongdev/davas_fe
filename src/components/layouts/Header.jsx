@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import LanguageSwitcher from "../LanguageSwitcher";
+import LanguageSwitcher from "@/components/shared/LanguageSwitcher";
 import { usePopup } from "@/providers/PopupProvider";
 
 export default function Header({ data }) {

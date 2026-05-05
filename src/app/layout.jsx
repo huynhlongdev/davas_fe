@@ -33,13 +33,13 @@ export const metadata = {
   description: "Multilingual website",
 };
 
-import { PopupProvider } from "@/providers/PopupProvider";
+import Providers from "@/providers/Providers";
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${clashDisplay.variable} ${manrope.variable}`}>
       <body>
-        <PopupProvider>{children}</PopupProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

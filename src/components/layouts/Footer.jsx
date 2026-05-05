@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
-import Icon from "@/components/SvgFromUrl";
+import Icon from "@/components/shared/Icon";
 
 export default function Footer({ data = {} }) {
   const { logo, by = "", text = null, address = [], copyright = "" } = data;
