@@ -4,12 +4,6 @@ import React, { useState } from "react";
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import Heading from "../shared/Heading";
 
-const investmentFunds = [
-  { name: "Quest Ventures", type: "Early-Stage VC" },
-  { name: "Antler", type: "Startup Generator" },
-  { name: "GenAI Fund", type: "AI-Focused Fund" },
-];
-
 export default function InvestmentSection({ data }) {
   const [activeInvestment, setActiveInvestment] = useState(0);
 
@@ -24,10 +18,10 @@ export default function InvestmentSection({ data }) {
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-0 border border-border rounded-[14px] overflow-hidden mt-13">
           {/* Sidebar */}
           <div className="bg-off border-r border-border">
-            <div className="text-t3 border-b-[1px] border-border text-sm font-medium uppercase py-3.5 px-6 ">
+            <div className="hidden md:block text-t3 border-b-[1px] border-border text-sm font-medium uppercase py-3.5 px-6 ">
               Fund Categories
             </div>
-            <div className="max-h-[760px] overflow-y-auto">
+            <div className="max-h-[760px] overflow-y-auto whitespace-nowrap flex md:block md:whitespace-normal">
               {items.map((fund, idx) => (
                 <div
                   key={idx}
@@ -48,8 +42,8 @@ export default function InvestmentSection({ data }) {
           </div>
 
           {/* Details */}
-          <div className="p-11 bg-white max-h-[800px] overflow-y-auto">
-            <h3 className="font-display text-[30px] font-bold mb-3.5">
+          <div className="p-5 md-p-11 bg-white max-h-[800px] overflow-y-auto">
+            <h3 className="font-display text-[24px] md:text-[30px] font-medium mb-3.5">
               {items[activeInvestment].text}
             </h3>
 
@@ -57,9 +51,7 @@ export default function InvestmentSection({ data }) {
               {items[activeInvestment].icon?.url && (
                 <img
                   src={`${process.env.NEXT_PUBLIC_API_URL}${items[activeInvestment].icon.url}`}
-                  height={40}
-                  width={150}
-                  className="mb-5"
+                  className="mb-5 h-[auto] max-w-22 object-contain"
                   alt=""
                 />
               )}

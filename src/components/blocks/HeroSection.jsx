@@ -32,7 +32,7 @@ export default function Hero({ data }) {
           {/* Title */}
           {title && (
             <h1
-              className="font-hero text-[clamp(56px,6.5vw,70px)] font-display font-semibold leading-[1.2] mb-7"
+              className="font-hero text-[clamp(46px,6.5vw,70px)] font-display font-semibold leading-[1.2] mb-7"
               dangerouslySetInnerHTML={{ __html: title }}
             ></h1>
           )}
@@ -55,10 +55,10 @@ export default function Hero({ data }) {
 
           {/* Stats */}
           {counters.length > 0 && (
-            <div className="flex gap-9 mt-13 pt-11 border-t border-border">
+            <div className="flex gap-3 md:gap-9 mt-13 pt-11 border-t border-border">
               {counters.map((stat, i) => (
                 <div key={i}>
-                  <div className="font-display text-t1 text-[34px] font-bold">
+                  <div className="font-display text-t1 text-[24px] md:text-[34px] font-bold">
                     {stat.number}{" "}
                     {stat.isPlus && (
                       <em className="text-red font-style-normal not-italic">

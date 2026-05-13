@@ -40,7 +40,6 @@ export default function Footer({ data = {} }) {
                 <img
                   src={logoUrl}
                   alt="Footer logo"
-                  fill
                   className="object-contain"
                 />
               </div>

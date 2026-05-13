@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import Heading from "../shared/Heading";
+import { useTranslations } from "next-intl";
 
 export default function ProgramSection({ data }) {
   const tabs = data?.tabsProgram ?? [];
@@ -66,6 +67,8 @@ export default function ProgramSection({ data }) {
 
   if (!tabs.length) return null;
 
+  const t = useTranslations("home");
+
   return (
     <section id="program" className="bg-gray-50 py-25">
       <div className="mx-auto max-w-[1360px] px-4">
@@ -82,7 +85,7 @@ export default function ProgramSection({ data }) {
                   key={day.id}
                   type="button"
                   onClick={() => setActiveTab(day.id)}
-                  className={`flex-1 border px-5 py-4 text-center cursor-pointer transition-all duration-200 ${
+                  className={`flex-1 border px-3 py-2 md:px-5 md:py-4 text-center cursor-pointer transition-all duration-200 ${
                     isActive
                       ? "border-ink bg-ink text-white"
                       : "border-gray-300 bg-white text-gray-500 hover:text-gray-700"
@@ -99,30 +102,32 @@ export default function ProgramSection({ data }) {
           </div>
 
           {/* Content */}
-          <div className="border border-t-0 border-gray-300 bg-white p-8">
+          <div className="border border-t-0 border-gray-300 bg-white p-5 md:p-8">
             {/* Program Tabs */}
-            <div className="mb-8 flex flex-wrap gap-3">
-              {programs
-                ?.filter((program) => program?.title && program.title !== "|")
-                .map((program) => {
-                  const isActive = activeSubTab === program.documentId;
+            {programs.length > 0 && (
+              <div className="mb-8 flex flex-wrap gap-3">
+                {programs
+                  ?.filter((program) => program?.title && program.title !== "|")
+                  .map((program) => {
+                    const isActive = activeSubTab === program.documentId;
 
-                  return (
-                    <button
-                      key={program.id}
-                      type="button"
-                      onClick={() => setActiveSubTab(program.documentId)}
-                      className={`rounded-lg border-2 px-4 py-2 text-sm font-medium cursor-pointer transition-all duration-200 ${
-                        isActive
-                          ? "border-red-400 bg-red-50 text-red-600"
-                          : "border-gray-200 bg-white text-gray-500 hover:text-gray-700"
-                      }`}
-                    >
-                      {program.title}
-                    </button>
-                  );
-                })}
-            </div>
+                    return (
+                      <button
+                        key={program.id}
+                        type="button"
+                        onClick={() => setActiveSubTab(program.documentId)}
+                        className={`rounded-lg border-2 px-4 py-2 text-sm font-medium cursor-pointer transition-all duration-200 ${
+                          isActive
+                            ? "border-red-400 bg-red-50 text-red-600"
+                            : "border-gray-200 bg-white text-gray-500 hover:text-gray-700"
+                        }`}
+                      >
+                        {program.title}
+                      </button>
+                    );
+                  })}
+              </div>
+            )}
 
             {/* Program Content */}
             {currentProgram && (
@@ -133,7 +138,7 @@ export default function ProgramSection({ data }) {
                       item.title ? (
                         <div
                           key={index}
-                          className="rounded-lg border p-5.5 grid grid-cols-[110px_1fr] gap-5.5 border-border"
+                          className="rounded-lg border p-5.5 grid grid-cols-[60px_1fr] md:grid-cols-[110px_1fr] gap-5.5 border-border"
                         >
                           <div className="font-display font-semibold text-red pt-0.2">
                             {item?.time}
@@ -163,12 +168,12 @@ export default function ProgramSection({ data }) {
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2.5"
+                        strokeWidth="2.5"
                       >
                         <rect x="3" y="4" width="18" height="18" rx="2"></rect>
                         <path d="M16 2v4M8 2v4M3 10h18"></path>
                       </svg>
-                      View Full Layout
+                      {t("btnViewFull")}
                     </button>
                   </div>
                 )}
@@ -199,7 +204,7 @@ export default function ProgramSection({ data }) {
                 className="w-full rounded-xl"
               />
             ) : (
-              <p>No layout image.</p>
+              <p>{t("noLayout")}.</p>
             )}
           </div>
         </div>

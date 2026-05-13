@@ -15,8 +15,6 @@ const getGridColumns = (columns) => {
 export default function CardList({ data }) {
   const gridClass = getGridColumns(data?.columns);
 
-  console.log(">>>CardList ", data);
-
   return (
     <div className={`grid ${gridClass} gap-6`}>
       {data?.map((card, index) => (

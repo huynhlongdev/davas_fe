@@ -1,0 +1,8 @@
+{
+    "home": {
+        "viewAll": "View All",
+        "showing": "Showing {current} of {total} representatives",
+        "btnViewFull" : "View Full Layout",
+        "noLayout" : "No layout image"
+    }
+}

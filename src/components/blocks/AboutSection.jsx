@@ -9,7 +9,7 @@ export default function About({ data }) {
       <div className="max-w-[1360px] px-4 mx-auto">
         <Heading
           data={heading}
-          className="gap-x-20 grid grid-cols-2 items-end"
+          className="gap-x-2 md:gap-x-20 md:grid grid-cols-2 items-end"
         />
 
         {/* Cards Grid */}

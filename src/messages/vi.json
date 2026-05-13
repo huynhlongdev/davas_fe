@@ -1,0 +1,8 @@
+{
+  "home": {
+    "viewAll": "Xem tất cả",
+    "showing": "Hiển thị {current} trên {total} đại diện",
+    "btnViewFull" : "View Full Layout",
+    "noLayout" : "No layout image"
+  }
+}

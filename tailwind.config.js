@@ -6,10 +6,10 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        display: ["var(--font-clash-display)"],
-        sans: ["var(--font-manrope)"],
-      },
+      // fontFamily: {
+      //   display: ["var(--font-clash-display)"],
+      //   sans: ["var(--font-manrope)"],
+      // },
     },
   },
 };

@@ -1,33 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import { usePopup } from "@/providers/PopupProvider";
 import RegisterEventForm from "@/components/shared/Form";
 
-export default function RegisterModal({ isOpen, onClose }) {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    company: "",
-    category: "",
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    onClose();
-  };
+export default function RegisterModal() {
+  const { isOpen, closePopup } = usePopup();
 
   if (!isOpen) return null;
 
   return (
     <div
-      className={`fixed inset-0 z-[500] bg-gray-900/70 backdrop-blur-sm flex items-center justify-center p-5 transition-opacity duration-250 ${
+      className={`form-modal fixed inset-0 z-[500] bg-gray-900/70 backdrop-blur-sm flex items-center justify-center p-5 transition-opacity duration-250 ${
         isOpen
           ? "opacity-100 pointer-events-auto"
           : "opacity-0 pointer-events-none"
@@ -40,11 +24,12 @@ export default function RegisterModal({ isOpen, onClose }) {
       >
         {/* Close Button */}
         <button
-          onClick={onClose}
+          onClick={closePopup}
           className="absolute top-5 right-5 z-10 w-9 h-9 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-200 transition-colors duration-150 cursor-pointer"
         >
           ✕
         </button>
+
         {/* Header */}
         <div className="px-10 pt-10 pb-7 bg-gradient-to-br from-gray-900 to-gray-800 relative overflow-hidden">
           <div

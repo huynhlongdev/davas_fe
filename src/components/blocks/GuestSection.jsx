@@ -5,6 +5,8 @@ import Heading from "@/components/shared/Heading";
 import Speaker from "@/components/shared/Speaker";
 import Button from "@/components/shared/Button";
 
+import { useTranslations } from "next-intl";
+
 export default function GuestSection({ data }) {
   const { heading, guests } = data;
 
@@ -18,6 +20,7 @@ export default function GuestSection({ data }) {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // console.log("isPopupOpen", currentGuest);
+  const t = useTranslations("home");
 
   return (
     <section id="speakers" className="py-25 bg-white">
@@ -54,13 +57,17 @@ export default function GuestSection({ data }) {
           </div>
         )}
 
-        <div className="flex items-center justify-between mt-7 pt-6 border-t-[1px] border-border">
+        <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-between gap-4 mt-7 pt-6 border-t-[1px] border-border">
           <span className="text-t3">
-            Showing 8 of {speakers.length} representatives
+            {t("showing", {
+              current: displayedSpeakers.length,
+
+              total: speakers.length,
+            })}
           </span>
           <Button
             data={{
-              text: `View All ${currentGuest?.text || "View All"}`,
+              text: `${t("viewAll")} ${currentGuest?.text || "View All"}`,
               variant: "style3",
             }}
             onClick={() => setIsPopupOpen(true)}

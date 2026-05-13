@@ -17,7 +17,7 @@ const Button = ({ data: button, className: customClass = "", onClick }) => {
   const { text, link, icon, variant, action, iconPosition = "left" } = button;
 
   const variantClass = VARIANTS[variant] || VARIANTS.style1;
-  const className = `inline-flex items-center justify-center px-8 py-3.5 rounded-lg font-bold gap-2 cursor-pointer capitalize transition-all duration-200 ${variantClass} ${customClass}`;
+  const className = `inline-flex items-center justify-center px-4 py-3.5 md:px-8 rounded-lg font-bold gap-2 cursor-pointer capitalize transition-all duration-200 ${variantClass} ${customClass}`;
 
   const renderIcon = useCallback(
     () => icon && <Icon icon={icon} className="w-4 h-4 shrink-0" />,

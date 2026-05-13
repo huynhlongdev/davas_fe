@@ -283,3 +283,11 @@ p:last-child {
     transform: translateY(0);
   }
 }
+
+.form-modal label {
+  color: var(--color-t3);
+}
+.form-modal input {
+  color: var(--color-t1);
+  font-size: 14px;
+}
